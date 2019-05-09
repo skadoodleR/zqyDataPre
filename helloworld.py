@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import xlsxwriter
 print('郭睿')
-EN = xlsxwriter.Workbook('D:/EN.xlsx')
+# EN = xlsxwriter.Workbook('D:/EN.xlsx')
 # ----------------------------------------------读文件---------------------------------------------
 # CES = pd.read_excel('C:/Users/GUORUI/Desktop/数据清洗/20190426__数据清洗/20190419_合格证排放标准.xls')
 # CPA = pd.read_excel('C:/Users/GUORUI/Desktop/数据清洗/20190426__数据清洗/20190419_合格证生产地址表.xls')
@@ -42,7 +42,7 @@ EN = xlsxwriter.Workbook('D:/EN.xlsx')
 #                     p = 0
 #                     start = index + 1
 #                 else:
-#                     EN3[i] = EN3[i].replace('++++', ', LTD')
+#                     EN3[i] = EN3[i].replace('￥￥￥', ', LTD')
 #                     sheet.write(row, 0, EN3[i])
 #                     sheet.write(row, 1, EN3[i][start:index])
 #                     start = index + 2
@@ -50,12 +50,12 @@ EN = xlsxwriter.Workbook('D:/EN.xlsx')
 #                     row += 1
 #                     num += 1
 #             if EN3[i][index] == "," or EN3[i][index] == "，" or EN3[i][index] == ";" or EN3[i][index] == "；" \
-#                     or EN3[i][index] == "/" or EN3[i][index] == "、":
+#                     or EN3[i][index] == "/" or EN3[i][index] == "、"  or EN3[i][index] == "+":
 #                 if EN3[i][start:index].isspace() or len(EN3[i][start:index]) == 0:
 #                     p = 0
 #                     start = index + 1
 #                 else:
-#                     EN3[i] = EN3[i].replace('++++', ', LTD')
+#                     EN3[i] = EN3[i].replace('￥￥￥', ', LTD')
 #                     sheet.write(row, 0, EN3[i])
 #                     sheet.write(row, 1, EN3[i][start:index])
 #                     start = index + 1

@@ -38,10 +38,13 @@ print('郭睿')
 #     print('lxy my princess')
 # print("lxy my princess")
 
-EN = xlsxwriter.Workbook('D:/demo.xlsx')
-AE = pd.read_excel('C:/Users/GUORUI/Desktop/数据清洗/公告企业.xlsx')
-EN3 = AE['ZD_ABSC']
-c = EN3[59]
+# EN = xlsxwriter.Workbook('D:/demo.xlsx')
+# a = pd.read_excel('C:/Users/GUORUI/Desktop/1.xls')
+# sheet = EN.get_worksheet_by_name('1')
+# print(sheet)
+#
+# rb = xlrd.open_workbook('C:/Users/GUORUI/Desktop/1.xls')
+# ws = rb.get_sheet(0)
 # b = '   33456   789'
 # d = '123'
 # e = '135'
@@ -79,9 +82,52 @@ c = EN3[59]
 # a = '12345678'
 # for i in range(0,len(a)-1):
 #     print(a[i])
-print(c)
-for i in range(0,len(c)):
-    if c[i] == '\r':
-        print(1)
-    if c[i] == '\n':
-        print(2)
+# print(c)
+# for i in range(0,len(c)):
+#     if c[i] == '\r':
+#         print(1)
+#     if c[i] == '\n':
+#         print(2)
+# a = float('NaN')
+# print(a == a)
+a = ['......123456公  ','123456公(1438/ppp)123','123456  ','123456有限公司  ']
+
+def regcompany(cname):
+    cname = cname.strip()
+    if cname[len(cname) - 1] == "公":
+        cname = cname + "司"
+    return cname
+def ischinese(str):
+    if '\u9fa5' > str >= '\u4e00':
+        return True
+    else:
+        return False
+
+def resymbol(str):
+    str = str.strip()
+    for i in range(0,len(str)-1):
+        if str[i].isalpha() or str[i].isdigit():
+            str = str[i:]
+            break
+    return str
+def rebrackets(str):
+    str = str.strip()
+    start = 0
+    end = 0
+    weight = 0
+    for i in range(0,len(str)):
+        if str[i] == '(':
+            start = i
+        elif str[i] == ')' and i > start:
+            end = i
+            break
+    if end == 0:
+        return str
+    for index in range(start+1,end-1):
+        if str[index].isalpha():
+            weight += 1
+    if weight*2 < (end - start - 1):
+        str = str.replace(str[start:end+1], '')
+    return str
+
+print(regcompany('123456公 '))

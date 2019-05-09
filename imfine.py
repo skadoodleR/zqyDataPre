@@ -3,8 +3,7 @@
 import pandas as pd
 import xlsxwriter
 print('郭睿')
-EA = xlsxwriter.Workbook('D:/EA.xlsx')
-
+# EA = xlsxwriter.Workbook('D:/EA.xlsx')
 # -------------------------------------------拆分CPA--------------
 # CPA = pd.read_excel('C:/Users/GUORUI/Desktop/数据清洗/20190426__数据清洗/20190419_合格证生产地址表.xls')
 # EA1 = CPA['cpscdz']
@@ -45,10 +44,10 @@ EA = xlsxwriter.Workbook('D:/EA.xlsx')
 # print(EA2.isnull().value_counts())
 # EA2 = EA2.fillna('NA')
 # print(EA2.isnull().value_counts())
-#
+
 # row = 0
 # for i in range(0, len(EA2)):
-#
+
 #     start = 0
 #     num = 0
 #     for index in range(0, len(EA2[i])):
