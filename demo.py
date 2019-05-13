@@ -130,4 +130,8 @@ def rebrackets(str):
         str = str.replace(str[start:end+1], '')
     return str
 
-print(regcompany('123456公 '))
+
+a = ['100','98']
+a =list(map(int, a))
+
+print('         '.replace('   ','l'))
