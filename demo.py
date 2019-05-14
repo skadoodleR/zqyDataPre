@@ -131,7 +131,8 @@ def rebrackets(str):
     return str
 
 
-a = ['100','98']
-a =list(map(int, a))
-
-print('         '.replace('   ','l'))
+# a = ['100','98']
+# a =list(map(int, a))
+# a = '123(123456)'
+# print(re.sub('\\(.*?\\)','',a))
+print('1(123)123'.replace('(':'l',')':'l'))
