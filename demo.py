@@ -135,4 +135,12 @@ def rebrackets(str):
 # a =list(map(int, a))
 # a = '123(123456)'
 # print(re.sub('\\(.*?\\)','',a))
-print('1(123)123'.replace('(':'l',')':'l'))
+# print('' == None)
+def reversesymbol(str):
+    if str == str and str != None:
+        for i in range(0,len(str)):
+            if str[len(str) - i - 1].isdigit():
+                    return str[:len(str)-i]
+        str = ''
+
+print('OO'.isdigit())
