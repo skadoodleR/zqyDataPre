@@ -20,13 +20,11 @@ def resymbol(str):
         str = ''
 
 def reversesymbol(str):
-        if str == str and str != None and len(str) > 1:
-                if str[len(str) - 1].isdigit():
-                        return str
-                else:
-                        return str[:len(str) - 1]
-        else:
-                return str
+    if str == str and str != None:
+        for i in range(0,len(str)):
+            if str[len(str) - i - 1].isnumeric():
+                    return str[:len(str)-i]
+        str = ''
 
 def addGB(str):
     if str[0].isdigit():
@@ -72,6 +70,7 @@ for i in range(0, len(indecs)):
     temp = temp.replace(' ','').replace('(','').replace(')','').replace('（','').replace('）','').replace('国','').replace('第','').replace('阶段','').replace('～','-').replace('~','-')
     temp = temp.replace('，',',').replace(';',',').replace('；',',').replace('、',',')
     temp = temp.replace('III','Ⅲ').replace('II','Ⅱ').replace('IV','Ⅳ').replace('VI','Ⅵ').replace('I','Ⅰ').replace('V','Ⅴ').replace('Ⅲ','国Ⅲ').replace('Ⅱ','国Ⅱ').replace('Ⅳ','国Ⅳ').replace('Ⅵ','国Ⅵ').replace('Ⅰ','国Ⅰ').replace('Ⅴ','国Ⅴ').replace('三','国Ⅲ').replace('二','国Ⅱ').replace('四','国Ⅳ').replace('六','国Ⅵ').replace('一','国Ⅰ').replace('五','国Ⅴ')
+    temp = reversesymbol(temp)
     sheet1.write(i, 1, temp)
 write.close()
 print('李欣沂')

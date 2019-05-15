@@ -143,4 +143,9 @@ def reversesymbol(str):
                     return str[:len(str)-i]
         str = ''
 
-print('OO'.isdigit())
+# a = 'as:5'
+# # print('OO'.isdigit())
+# # print(re.sub('\w:','',a))
+# print(re.sub(',,*?','','1,,,,,,2,,,,,3,33'))
+
+print('Ⅱ'.isnumeric())
