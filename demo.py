@@ -10,6 +10,7 @@ import xlsxwriter
 import xlwings as xw
 from string import digits
 import re
+import difflib
 print('郭睿')
 
 # a = 1
@@ -143,9 +144,27 @@ def reversesymbol(str):
                     return str[:len(str)-i]
         str = ''
 
-# a = 'as:5'
+a = 'a中,,文,,:5'
 # # print('OO'.isdigit())
-# # print(re.sub('\w:','',a))
+# print(re.sub('文.*?\\:','',a))
 # print(re.sub(',,*?','','1,,,,,,2,,,,,3,33'))
 
-print('Ⅱ'.isnumeric())
+# print('Ⅱ'.isnumeric())
+
+
+# def string_similar(s1, s2):
+#     return difflib.SequenceMatcher(None, s1, s2).quick_ratio()
+
+
+# print(string_similar('州经济区', '通州'))
+
+# a = '123456'
+# a = a[2:]
+# a = a[2:]
+# print(a)
+# temp = '配置1：360,配置2：320'
+# temp = re.sub('配.*?\\：','',temp)
+# print(temp)
+str = '1820sadewwec:5165124512c'
+# print(re.sub(r'[^\x00-\x7f]', ' ', str)
+print(re.sub('\d.*?c','',str))

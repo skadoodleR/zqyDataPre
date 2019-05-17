@@ -24,7 +24,7 @@ for i in range(0, len(EA1)):
     if EA1[i][index].isspace() or len(EA1[i][start:]) == 0:
         continue
     for indecs in range(start, len(EA1[i])):
-        if EA1[i][indecs] == ',' or EA1[i][indecs] == '，':
+        if EA1[i][indecs] == ',' or EA1[i][indecs] == '，' or EA1[i][indecs] == ';' or EA1[i][indecs] == '；':
             sheet1.write(row, 0, EA1[i])
             sheet1.write(row, 1, EA1[i][start:indecs])
             start = indecs + 1
@@ -47,7 +47,6 @@ print(EA2.isnull().value_counts())
 
 row = 0
 for i in range(0, len(EA2)):
-
     start = 0
     num = 0
     for index in range(0, len(EA2[i])):

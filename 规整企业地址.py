@@ -62,7 +62,7 @@ for i in range(0, len(ea)):
     b = resymbol(b)
     b = rebrackets(b)
     b = reversesymbol(b)
-    if b == None or len(b) < 3:
+    if b == None or len(b) < 2:
         continue
     for g in range(0,len(b)-2):
         #下面这些 都是识别指定汉字 然后读到下一个汉字在截取字符串替换
@@ -73,7 +73,7 @@ for i in range(0, len(ea)):
                     vaper = v
             if vaper == g:
                 vaper = len(b)
-            b = b.replace(b[g:vaper-1],'') 
+            b = b.replace(b[g:vaper],'') 
     for g in range(0,len(b)-2):
         #下面这些 都是识别指定汉字 然后读到下一个汉字在截取字符串替换
         if g+1 < len(b) and ((b[g] == '邮' and b[g+1] == '编') or (b[g] == '传' and b[g+1] == '真') or (b[g] == '电' and b[g+1] == '话') or (b[g] == '网' and b[g+1] == '址') or (b[g] == '查' and b[g+1] == '询') or (b[g] == '邮' and b[g+1] == '政') or (b[g] == '编' and b[g+1] == '码') or (b[g] == '公' and b[g+1] == '司') or (b[g] == '网' and b[g+1] == '站') or (b[g] == '0' and b[g+1] == '3')  or (b[g] == '销' and b[g+1] == '售')):
@@ -83,7 +83,20 @@ for i in range(0, len(ea)):
                     vaper = v
             if vaper == g:
                 vaper = len(b) + 1
-            b = b.replace(b[g:vaper-1],'')        
+            b = b.replace(b[g:vaper],'')  
+
+    for g in range(0,len(b)-2):
+        #下面这些 都是识别指定汉字 然后读到下一个汉字在截取字符串替换
+        if g+1 < len(b) and ((b[g] == '邮' and b[g+1] == '编') or (b[g] == '传' and b[g+1] == '真') or (b[g] == '电' and b[g+1] == '话') or (b[g] == '网' and b[g+1] == '址') or (b[g] == '查' and b[g+1] == '询') or (b[g] == '邮' and b[g+1] == '政') or (b[g] == '编' and b[g+1] == '码') or (b[g] == '公' and b[g+1] == '司') or (b[g] == '网' and b[g+1] == '站') or (b[g] == '0' and b[g+1] == '3')  or (b[g] == '销' and b[g+1] == '售')):
+            vaper = g
+            for v in range(g+2,len(b) - 1):
+                if ischinese(b[v]):
+                    vaper = v
+            if vaper == g:
+                vaper = len(b) + 1
+            b = b.replace(b[g:vaper],'')  
+    b = b.replace(' ','') .replace('真:020-82489173','').replace('真:020-82286884', '').replace('真:020-32387534', '').replace('真：020-82489173','')
+    b = reversesymbol(b)      
     sheet1.write(i, 1, b)
 
 EA.close()

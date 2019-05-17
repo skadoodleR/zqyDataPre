@@ -2,6 +2,7 @@
 # -*- coding: <encoding name> -*-
 import pandas as pd
 import xlsxwriter
+import re
 print('郭睿')
 rn = xlsxwriter.Workbook('D:/RN.xlsx')
 # -------------------methods-----------------------------
@@ -16,6 +17,12 @@ def resymbol(str):
                         return str
         str = ''
 
+def reversesymbol(str):
+    if str == str and str != None:
+        for i in range(0,len(str)):
+            if str[len(str) - i - 1].isalpha():
+                    return str[:len(str)-i]
+        str = ''
 
 def rebrackets(str):
     if str == str and str != None:
@@ -56,6 +63,7 @@ def ischinese(str):
 pre = pd.read_excel('D:/拆分后企业名称.xlsx')
 pen = pre['pmc']
 en = pre['mc']
+nm = pre['nm']
 sheet1 = rn.add_worksheet('RN')
 for i in range(0, len(en)):
     a = pen[i]
@@ -121,7 +129,10 @@ for i in range(0, len(en)):
             b = b[2:]
         
         b = resymbol(b)
+        b = reversesymbol(b)
         if b != None and len(b) > 2:
+            b = re.sub('\\(.*?\\)','',b)
+            b = re.sub('\\（.*?\\）','',b)
             sheet1.write(i, 1, b)
 rn.close()
 print('李欣沂')
