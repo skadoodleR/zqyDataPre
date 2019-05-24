@@ -53,6 +53,8 @@ sheng = sheng.reset_index()['省']
 shi = shi.reset_index()['市']
 #
 for i in range(0, len(addr)):
+        testshi = ''
+        testsheng = ''
         a = 0
         b = 0
         temp = addr[i]
@@ -75,6 +77,7 @@ for i in range(0, len(addr)):
                 sub = temp[0:min(3,len(addr[i]))]
                 if string_similar(sub, c[0:2]) > 0.76:
                         sheet1.write(i, 3, c)
+                        testshi = c
                         newprovince = sheng[j]
                         b = 1
                         temp = temp[2:]
@@ -84,12 +87,16 @@ for i in range(0, len(addr)):
                 sub = temp[0:min(3,len(addr[i]))]
                 c = district[j]
                 if string_similar(sub, c[0:2]) > 0.76:
-                        sheet1.write(i, 4, c)
-                        if b == 0:
-                                sheet1.write(i, 3, preshi[j])
-                        if a == 0:
-                                sheet1.write(i, 2, presheng[j])
-                        break
+                        if sheng[j] == testsheng or testsheng == '':
+                                if shi[j] == testshi or testshi == '':
+                                        sheet1.write(i, 4, c)
+                                        if b == 0:
+                                                sheet1.write(i, 3, preshi[j])
+                                        if a == 0:
+                                                sheet1.write(i, 2, presheng[j])
+                                        break
+                                else:
+                                        continue
         if straight == '北京市' or straight == '天津市' or straight == '上海市' or straight == '重庆市':
                 sheet1.write(i, 3, straight)
 write.close()

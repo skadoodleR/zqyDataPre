@@ -4,7 +4,7 @@ import pandas as pd
 import xlsxwriter
 import re
 print('郭睿')
-rn = xlsxwriter.Workbook('D:/RN.xlsx')
+rn = xlsxwriter.Workbook('D:/RN.xlsx',{'nan_inf_to_errors': True})
 # -------------------methods-----------------------------
 
 
@@ -60,19 +60,20 @@ def ischinese(str):
 # ---------------------------------规整EN--------------------------
 
 
-pre = pd.read_excel('D:/拆分后企业名称.xlsx')
-pen = pre['pmc']
-en = pre['mc']
-nm = pre['nm']
+pre = pd.read_excel('D:/rest整合.xlsx')
+pen = pre['yuan']
+en = pre['chai']
+nm = pre['indecs']
 sheet1 = rn.add_worksheet('RN')
 for i in range(0, len(en)):
     a = pen[i]
     b = en[i]
     if a == a:
         sheet1.write(i, 0, a)
+        sheet1.write(i,1,b)
         b = resymbol(b)
-        b = rebrackets(b)
-        b = rebrackets(b)
+        # b = rebrackets(b)
+        # b = rebrackets(b)
         b = regcompany(b)
         if b != None and b[0:5] == '对应负荷指':
             b = ''
@@ -127,12 +128,11 @@ for i in range(0, len(en)):
             b = b[9:]
         if b != None and len(b) > 2 and b[0] == '胎' :
             b = b[2:]
-        
+        if b != None:
+            b = b.replace('（','(').replace('）',')')
         b = resymbol(b)
         b = reversesymbol(b)
-        if b != None and len(b) > 2:
-            b = re.sub('\\(.*?\\)','',b)
-            b = re.sub('\\（.*?\\）','',b)
-            sheet1.write(i, 1, b)
+        sheet1.write(i, 2, b)
+        sheet1.write(i,3,0)
 rn.close()
 print('李欣沂')

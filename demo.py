@@ -165,6 +165,10 @@ a = 'a中,,文,,:5'
 # temp = '配置1：360,配置2：320'
 # temp = re.sub('配.*?\\：','',temp)
 # print(temp)
-str = '1820sadewwec:5165124512c'
-# print(re.sub(r'[^\x00-\x7f]', ' ', str)
-print(re.sub('\d.*?c','',str))
+# str = '1820sadewwec:5165124512c'
+# # print(re.sub(r'[^\x00-\x7f]', ' ', str)
+# # print(re.sub('\d.*?c','',str))
+# str = '123456轮胎'
+# str = re.sub('轮胎.*?','',str)
+# print(str)
+print('国'.isalpha())
